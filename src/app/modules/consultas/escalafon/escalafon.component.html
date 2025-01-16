@@ -1,0 +1,36 @@
+<app-breadcrumb [icon]="'fa-file-export'" [title]="'Reporte Escalafón de Cargos'"  [items]="'Módulo,Consultas,Escalafón de Cargos'"></app-breadcrumb>
+<div class="app-content-inner">
+    <div class="app-content-tile">
+        <div class="flex-content">
+            <div class="form-content-left">
+                <div class="inner-col">
+                    <div class="col col25">
+                        <div class="label-row">Categoría</div>
+                        <select [(ngModel)]="reporte.tipo_categoria_id" (change)="changeCategoria(reporte.tipo_categoria_id)">
+                            <option value="0">Seleccionar...</option>
+                            <option *ngFor="let item of varcategoria" value="{{item.id}}">{{item.detalle}}</option>
+                        </select>
+                    </div>
+                    <div class="col col25">
+                        <div class="label-row">Cuerpo</div>
+                        <input type="text" placeholder="Seleccionar..." (click)="saveCuerpo()" [(ngModel)]="reporte.varcuerpo">
+                    </div>
+                    <div class="col col25">
+                        <div class="label-row">Especialidad</div>
+                        <input type="text" placeholder="Seleccionar...." (click)="saveEspecialidad()" [(ngModel)]="reporte.varespecialidad">
+                    </div>
+                    <div class="col col25">
+                        <div class="label-row">Área de Conocimiento</div>
+                        <input type="text" placeholder="Seleccionar..." (click)="saveArea()" [(ngModel)]="reporte.vararea">
+                    </div>
+                </div>
+            </div>
+            <div class="line-col"></div>
+            <div class="form-content-right">
+                <button type="button" class="button btn-default" style="width: 120px !important" (click)="export()">Exportar Excel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-select-modal [title]="titleModal" [show]="selectModal" [array]="array" [arrayTemp]="array" (output)="dataform(inputform, $event)" (close)="closeSelectModal($event)"></app-select-modal>
